@@ -3,7 +3,7 @@ LOG_DIR="./"
 mkdir -p "$LOG_DIR"
 
 # Cantidad de contenedores a crear
-NUM_CONTENEDORES=1
+NUM_CONTENEDORES=10
 
 # Imagen base
 DOCKER_IMAGE="containerstack/alpine-stress"
@@ -26,19 +26,19 @@ for i in $(seq 1 $NUM_CONTENEDORES); do
 
     case "$CARGA" in
         "cpu")
-            sudo docker run --rm -d --cpus="0.1" --name "$NOMBRE" "$DOCKER_IMAGE" stress --cpu 1
+            sudo docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --cpu 1
             ;;
         "ram")
-            sudo docker run --rm -d --memory="64m" --memory-swap="64m" --name "$NOMBRE" "$DOCKER_IMAGE" stress --vm 1 --vm-bytes 32M
+            sudo docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --vm 1
             ;;
         "io")
-            sudo docker run --rm -d --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --io 1
+            sudo docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --io 1
             ;;
         "disk")
-            sudo docker run --rm -d --memory="32m" --memory-swap="32m" --name "$NOMBRE" "$DOCKER_IMAGE" stress --hdd 1 --hdd-bytes 64M
+            sudo docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --hdd 1 --hdd-bytes 64M
             ;;
     esac
-    
-    echo "[$(date)] Contenedor creado: $NOMBRE ($CARGA)" | tee -a "$LOG_DIR/AUTODELETE.log"
+
+#    echo "[$(date)] Contenedor creado: $NOMBRE ($CARGA)" | tee -a "$LOG_DIR/AUTODELETE.log"
 done
 
