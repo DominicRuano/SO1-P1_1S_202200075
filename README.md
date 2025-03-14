@@ -1,5 +1,7 @@
 # Documentación del Proyecto: Gestor de Contenedores
 
+## Dominic Juan Pablo Ruano Perez - 202200075
+
 ## Universidad de San Carlos de Guatemala
 
 **Facultad de Ingeniería**\
@@ -52,8 +54,22 @@ El sistema consta de los siguientes componentes fundamentales:
 
 Comandos utilizados:
 ```bash
-// Comando para hacer pull a la imagen
+# Comando para hacer pull a la imagen
 sudo docker pull  containerstack/alpine-stress
+
+# Dar permisos a docker para no usar el sudo (obligatorio para usar cronjob)
+sudo groupadd docker
+sudo usermod -aG docker $USER
+# Reiniciar la maquina
+newgrp docker
+
+# Gestion de crontab
+* * * * * /bin/bash ~/Desktop/SO1-P1_1S_202200075/scriptContenedores/contenedores.bash >> ~/Desktop/SO1-P1_1S_202200075/scriptContenedores/cron_logs.txt 2>&1
+* * * * * sleep 30 && /bin/bash ~/Desktop/SO1-P1_1S_202200075/scriptContenedores/stop.bash
+
+sudo systemctl stop cron
+sudo systemctl start cron
+
 
 ```
 

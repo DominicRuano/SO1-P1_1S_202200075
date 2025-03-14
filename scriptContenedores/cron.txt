@@ -1,0 +1,17 @@
+# Para configurar
+
+crontab -e
+
+# Para ejecutar cada 60s
+
+* * * * * /bin/bash ~/Desktop/SO1-P1_1S_202200075/scriptContenedores/contenedores2.bash
+#* * * * * sleep 30 && /bin/bash ~/Desktop/SO1-P1_1S_202200075/scriptContenedores/stop.bash
+
+# Para ejecutar cada 30s
+
+
+* * * * * /bin/bash ~/Desktop/SO1-P1_1S_202200075/scriptContenedores/contenedores2.bash
+* * * * * sleep 30 && /bin/bash ~/Desktop/SO1-P1_1S_202200075/scriptContenedores/contenedores2.bash
+
+#* * * * * sleep 15 && /bin/bash ~/Desktop/SO1-P1_1S_202200075/scriptContenedores/stop.bash
+#* * * * * sleep 45 && /bin/bash ~/Desktop/SO1-P1_1S_202200075/scriptContenedores/stop.bash

@@ -26,16 +26,16 @@ for i in $(seq 1 $NUM_CONTENEDORES); do
 
     case "$CARGA" in
         "cpu")
-            sudo docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --cpu 1
+            docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --cpu 1
             ;;
         "ram")
-            sudo docker run --rm -d --cpus="0.1" --memory="32m" --memory-swap="32m" --blkio-weight=30  --name "$NOMBRE" "$DOCKER_IMAGE" stress --vm 1 --vm-bytes 8M
+            docker run --rm -d --cpus="0.1" --memory="32m" --memory-swap="32m" --blkio-weight=30  --name "$NOMBRE" "$DOCKER_IMAGE" stress --vm 1 --vm-bytes 8M
             ;;
         "io")
-            sudo docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --io 1
+            docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --io 1
             ;;
         "disk")
-            sudo docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --hdd 1 --hdd-bytes 64M
+            docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --hdd 1 --hdd-bytes 64M
             ;;
     esac
 
