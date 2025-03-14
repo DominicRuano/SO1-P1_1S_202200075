@@ -173,7 +173,7 @@ static int sysinfo_show(struct seq_file *m, void *v) {
     
     /* Sección de CPU */
     seq_printf(m, "  \"CPU\": {\n");
-    seq_printf(m, "    \"Usage\": %lu\n", cpu_usage);
+    seq_printf(m, "    \"Usage\": %lu.%02lu\n", cpu_usage);
     seq_printf(m, "  },\n");
     
     /* Sección de procesos */
@@ -202,8 +202,8 @@ static int sysinfo_show(struct seq_file *m, void *v) {
             seq_printf(m, "    	 \"PID\": %d,\n", task->pid);
             seq_printf(m, "    	 \"Name\": \"%s\",\n", task->comm);
 	    seq_printf(m, "      \"Cmdline\": \"%s\",\n", cmdline);
-            seq_printf(m, "    	 \"MemoryUsage\": %lu.%02lu,\n", mem_usage / 100, mem_usage % 100);
-            seq_printf(m, "    	 \"CPUUsage\": %lu.%02lu,\n", cpu_usage / 100, cpu_usage % 100);
+            seq_printf(m, "    	 \"MemoryUsage\": %lu.%04lu,\n", mem_usage / 100, mem_usage % 100);
+            seq_printf(m, "    	 \"CPUUsage\": %lu.%04lu,\n", cpu_usage / 100, cpu_usage % 100);
             seq_printf(m, "    	 \"DiskRead\": %lu,\n", disk_read);
             seq_printf(m, "    	 \"DiskWrite\": %lu\n", disk_write);
             seq_printf(m, "  	}");
@@ -226,13 +226,15 @@ static int sysinfo_open(struct inode *inode, struct file *file) {
 }
 
 /* Define las operaciones de archivo para la entrada de /proc usando file_operations */
-static const struct file_operations sysinfo_ops = {
-    .owner = THIS_MODULE,
-    .open = sysinfo_open,
-    .read = seq_read,
-    .llseek = seq_lseek,
-    .release = single_release,
+static const struct proc_ops sysinfo_ops = {
+    .proc_open = sysinfo_open,
+    .proc_read = seq_read,
+    .proc_lseek = seq_lseek,
+    .proc_release = single_release,
 };
+
+
+
 
 /**
  * Función de inicialización del módulo

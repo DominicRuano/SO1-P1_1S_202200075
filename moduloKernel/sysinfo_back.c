@@ -145,7 +145,10 @@ static int sysinfo_show(struct seq_file *m, void *v) {
     unsigned long cpu_usage = 0;
     unsigned long mem_total_kb, mem_free_kb, mem_used_kb;
     unsigned long mem_usage = 0, disk_read = 0, disk_write = 0;
-
+    char cmdline[256] = {0}, cmd_path[64];
+    struct file *file, *cmd_file;    
+    loff_t pos = 0;
+    ssize_t bytes;
     int first_process = 1;
 
     /* Obtiene información de memoria */
@@ -185,9 +188,20 @@ static int sysinfo_show(struct seq_file *m, void *v) {
                 first_process = 0;
             }
 
+	    // Obtener la línea de comando del proceso
+	    snprintf(cmd_path, sizeof(cmd_path), "/proc/%d/cmdline", task->pid);
+	    cmd_file = filp_open(cmd_path, O_RDONLY, 0);
+	    pos = 0;
+	    if (!IS_ERR(cmd_file)) {
+		    kernel_read(cmd_file, cmdline, sizeof(cmdline) - 1, &pos);
+		    filp_close(cmd_file, NULL);
+	    }
+
+
             seq_printf(m, "	{");
             seq_printf(m, "    	 \"PID\": %d,\n", task->pid);
             seq_printf(m, "    	 \"Name\": \"%s\",\n", task->comm);
+	    seq_printf(m, "      \"Cmdline\": \"%s\",\n", cmdline);
             seq_printf(m, "    	 \"MemoryUsage\": %lu.%02lu,\n", mem_usage / 100, mem_usage % 100);
             seq_printf(m, "    	 \"CPUUsage\": %lu.%02lu,\n", cpu_usage / 100, cpu_usage % 100);
             seq_printf(m, "    	 \"DiskRead\": %lu,\n", disk_read);
