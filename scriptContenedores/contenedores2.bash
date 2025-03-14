@@ -29,7 +29,7 @@ for i in $(seq 1 $NUM_CONTENEDORES); do
             sudo docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --cpu 1
             ;;
         "ram")
-            sudo docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --vm 1
+            sudo docker run --rm -d --cpus="0.1" --memory="32m" --memory-swap="32m" --blkio-weight=30  --name "$NOMBRE" "$DOCKER_IMAGE" stress --vm 1 --vm-bytes 8M
             ;;
         "io")
             sudo docker run --rm -d --cpus="0.1" --memory="64m" --memory-swap="64m" --blkio-weight=10 --name "$NOMBRE" "$DOCKER_IMAGE" stress --io 1
@@ -39,6 +39,6 @@ for i in $(seq 1 $NUM_CONTENEDORES); do
             ;;
     esac
 
-#    echo "[$(date)] Contenedor creado: $NOMBRE ($CARGA)" | tee -a "$LOG_DIR/AUTODELETE.log"
+    echo "[$(date)] Contenedor creado: $NOMBRE ($CARGA)" | tee -a "$LOG_DIR/AUTODELETE.log"
 done
 
