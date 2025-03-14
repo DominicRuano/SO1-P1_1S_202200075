@@ -87,6 +87,30 @@ sudo systemctl start cron
   - Actividad de I/O
 - Los datos se guardan en `/proc/sysinfo_202200075` en formato JSON, facilitando su acceso y análisis.
 
+```bash
+# Instalar todo lo necesario
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential linux-headers-$(uname -r) make gcc
+
+# Entrar en la carpeta que contiene el modulo
+cd ./moduloKernel
+
+# compilar
+make clean
+make
+
+# Ejecutar el modulo
+sudo insmod sysinfo.ko
+
+# Verificar que este ejecutando
+lsmod | grep sysinfo
+
+# Eliminar el modulo
+sudo rmmod sysinfo.ko
+
+```
+
+
 ### 4.3 Servicio en Rust
 
 - Se encarga de la gestión central del sistema y la administración eficiente de los contenedores.
