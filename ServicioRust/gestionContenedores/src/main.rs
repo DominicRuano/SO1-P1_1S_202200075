@@ -2,6 +2,7 @@ use std::{fs, process::Command, thread, time::{Duration, Instant}};
 use reqwest::blocking::Client;
 use serde::{Deserialize, Serialize};
 use std::sync::{Arc, atomic::{AtomicBool, Ordering}};
+use std::collections::HashMap;
 
 // Estructuras para manejar la memoria y CPU
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -28,6 +29,134 @@ struct ProcessInfo {
     DiskWrite: u64,
     Time: u64,
 }
+
+fn clean_containers(data: &SysInfo) {
+    println!("🛠 [DEBUG] Iniciando limpieza de contenedores...");
+
+    // Obtener la lista de contenedores en ejecución con `docker ps`
+    let output = Command::new("docker")
+        .args(["ps", "--format", "{{.ID}}"])
+        .output()
+        .expect("❌ [ERROR] Fallo al obtener contenedores en ejecución");
+
+    let running_containers = String::from_utf8_lossy(&output.stdout);
+    let running_containers: Vec<&str> = running_containers.lines().collect();
+
+    //println!("📜 [INFO] Contenedores en ejecución obtenidos: {:?}", running_containers);
+
+    // Mapa para rastrear el contenedor más nuevo de cada tipo
+    let mut latest_containers: HashMap<String, (String, u64)> = HashMap::new();
+
+    // Extraer IDs de contenedores desde `Processes.Cmdline`
+    for process in &data.Processes {
+        //println!("🔎 [DEBUG] Procesando `Cmdline`: {}", process.Cmdline);
+        
+        if let Some(container_id) = extract_container_id(&process.Cmdline) {
+            //println!("✅ [INFO] ID extraído del JSON: {}", container_id);
+
+            // Obtener el tipo del contenedor con `docker ps | grep <id> | awk '{print $4}'`
+            let container_type = get_container_type(&container_id);
+            //println!("🔍 [DEBUG] Tipo de contenedor detectado: {}", container_type);
+
+            // Solo tomamos en cuenta los tipos válidos
+            if ["--cpu", "--hdd", "--vm", "--disk", "--io"].contains(&container_type.as_str()) {
+                let time = process.Time;
+                
+                match latest_containers.get(&container_type) {
+                    Some((existing_id, existing_time)) => {
+                        if time > *existing_time {
+                            println!("🔄 [INFO] Actualizando contenedor más nuevo para {}: {}", container_type, container_id);
+                            latest_containers.insert(container_type.clone(), (container_id.clone(), time));
+                        }
+                    },
+                    None => {
+                        println!("➕ [INFO] Nuevo contenedor más reciente para {}: {}", container_type, container_id);
+                        latest_containers.insert(container_type.clone(), (container_id.clone(), time));
+                    }
+                }
+            } else {
+                //println!("✅ [INFO] Contenedor {} no es de tipo conocido, se mantiene activo.", container_id);
+            }
+        } else {
+            //println!("⚠️ [WARNING] No se encontró un ID en `Cmdline`: {}", process.Cmdline);
+        }
+    }
+
+    println!("📜 [INFO] Contenedores más nuevos por tipo: {:?}", latest_containers);
+
+    // Comparar los IDs y eliminar los contenedores que no sean los más recientes de cada tipo
+    for container_id in &running_containers {
+        let container_type = get_container_type(container_id);
+
+        if let Some((latest_id, _)) = latest_containers.get(&container_type) {
+            if latest_id == container_id {
+                println!("✅ [INFO] Contenedor más reciente de tipo {}: {} se mantiene activo.", container_type, container_id);
+                continue;
+            }
+        }
+
+        if !["--cpu", "--hdd", "--vm", "--disk", "--io"].contains(&container_type.as_str()) {
+            println!("✅ [INFO] Contenedor {}, se mantiene activo.", container_id);
+            continue;
+        }
+
+        //println!("🗑 [INFO] Eliminando contenedor: {}", container_id);
+        let remove_output = Command::new("docker")
+            .args(["rm", "-f", container_id])
+            .output();
+
+        match remove_output {
+            Ok(_) => println!("✅ [INFO] Contenedor eliminado: {}", container_id),
+            Err(e) => println!("❌ [ERROR] Fallo al eliminar contenedor {}: {}", container_id, e),
+        }
+    }
+
+    println!("✅ [INFO] Limpieza de contenedores finalizada.");
+}
+
+fn extract_container_id(cmdline: &str) -> Option<String> {
+    //println!("🔍 [DEBUG] Extrayendo ID de contenedor desde: {}", cmdline);
+    
+    let parts: Vec<&str> = cmdline.split_whitespace().collect();
+    for (i, &part) in parts.iter().enumerate() {
+        if part == "-id" && i + 1 < parts.len() {
+            let full_id = parts[i + 1];
+            let short_id: String = full_id.chars().take(5).collect(); // Tomar solo los primeros 5 caracteres
+            
+            //println!("✅ [INFO] ID completo: {} | ID truncado: {}", full_id, short_id);
+            return Some(short_id);
+        }
+    }
+
+    println!("⚠️ [WARNING] No se encontró un ID en `Cmdline`.");
+    None
+}
+
+
+fn get_container_type(container_id: &str) -> String {
+    let output = Command::new("sh")
+        .arg("-c")
+        .arg(format!("docker ps | grep {} | awk '{{print $4}}'", container_id))
+        .output();
+
+    match output {
+        Ok(out) => {
+            let result = String::from_utf8_lossy(&out.stdout).trim().to_string();
+            if result.is_empty() {
+                //println!("⚠️ [WARNING] No se pudo obtener tipo para contenedor: {}", container_id);
+                return "unknown".to_string();
+            }
+            result
+        }
+        Err(e) => {
+            //println!("❌ [ERROR] Fallo ejecutando `docker ps` para {}: {}", container_id, e);
+            "unknown".to_string()
+        }
+    }
+}
+
+
+
 
 // Estructura principal del JSON
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -83,7 +212,7 @@ fn send_log(log_server: &str, data: &SysInfo) {
     let response = client.post(log_server).json(data).send();
 
     match response {
-        Ok(resp) => println!("📡 Logs enviados: {:?}", resp.status()),
+        Ok(resp) => println!("📡 Logs enviados ({:?})", resp.status()),
         Err(e) => println!("❌ Error enviando logs: {}", e),
     }
 }
@@ -159,10 +288,12 @@ fn main() {
                 print_logs(&data_clone);
             }));
 
+            
             // 🧵 Thread para eliminar contenedores (comentado hasta implementarlo)
-            // threads.push(thread::spawn(move || {
-            //     clean_containers();
-            // }));
+            let data_clone = data.clone();
+            threads.push(thread::spawn(move || {
+                 clean_containers(&data_clone);
+            }));
         }
 
         // 🔄 Esperar a que todos los threads terminen
