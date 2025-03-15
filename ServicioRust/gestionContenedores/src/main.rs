@@ -1,22 +1,23 @@
 use std::{fs, process::Command, thread, time::{Duration, Instant}};
 use reqwest::blocking::Client;
 use serde::{Deserialize, Serialize};
+use std::sync::{Arc, atomic::{AtomicBool, Ordering}};
 
 // Estructuras para manejar la memoria y CPU
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 struct MemoryInfo {
     Total: u64,
     Free: u64,
     Used: u64,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 struct CPUInfo {
     Usage: f64,
 }
 
 // Estructura para la información de los procesos
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 struct ProcessInfo {
     PID: u32,
     Name: String,
@@ -29,7 +30,7 @@ struct ProcessInfo {
 }
 
 // Estructura principal del JSON
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 struct SysInfo {
     Memory: MemoryInfo,
     CPU: CPUInfo,
@@ -68,7 +69,7 @@ fn start_container() {
 // 🛠 Función para leer y deserializar `/proc/sysinfo_<carnet>`
 fn read_sysinfo(carnet: &str) -> Option<SysInfo> {
     let path = format!("/proc/sysinfo_{}", carnet);
-    if let Ok(content) = fs::read_to_string(path) {
+    if let Ok(content) = fs::read_to_string(&path) {
         serde_json::from_str(&content).ok()
     } else {
         println!("❌ Error leyendo `{}`", path);
@@ -123,10 +124,21 @@ fn main() {
     let carnet = "202200075";  // Cambia por tu carnet real
     let log_server = "http://localhost:8000/logs";  // API en Python
 
+    let running = Arc::new(AtomicBool::new(true));
+    let r = running.clone();  // ✅ Clonar `running` para usarlo en `while`
+
+    // Capturar SIGINT (Ctrl+C) para cerrar el contenedor antes de salir
+    ctrlc::set_handler(move || {
+        println!("🛑 Señal SIGINT recibida, deteniendo contenedor...");
+        running.store(false, Ordering::SeqCst);
+    }).expect("Error al configurar el manejador de señales");
+
+
+
     println!("🎯 Iniciando servicio en Rust...");
     start_container();  // 🔹 Levantar contenedor antes del loop
 
-    loop {
+    while r.load(Ordering::SeqCst) {
         let start_time = Instant::now(); // ⏳ Marca el inicio del ciclo
 
         let sysinfo = read_sysinfo(carnet);
@@ -172,51 +184,5 @@ fn main() {
 
     // 🔹 Si alguna vez el loop terminara, detenemos el contenedor
     stop_container();
-}
-se std::{fs, process::Command, thread, time::Duration};
-use reqwest::blocking::Client;
-use serde::{Deserialize, Serialize};
-
-// Definir la estructura de los logs
-#[derive(Serialize, Deserialize, Debug)]
-struct SysInfo {
-    total_mem: u64,
-    free_mem: u64,
-    used_mem: u64,
-    cpu_usage: f64,
-}
-
-fn read_sysinfo(carnet: &str) -> Option<SysInfo> {
-    let path = format!("/proc/sysinfo_{}", carnet);
-    if let Ok(content) = fs::read_to_string(path) {
-        serde_json::from_str(&content).ok()
-    } else {
-        None
-    }
-}
-
-fn send_log(log_server: &str, data: &SysInfo) {
-    let client = Client::new();
-    let _ = client.post(log_server)
-        .json(data)
-        .send();
-}
-
-fn main() {
-    let carnet = "202200075";  // Cambia por tu carnet real
-    let log_server = "http://localhost:8000/logs";  // API en Python
-
-    println!("Iniciando servicio de Rust...");
-
-    loop {
-        if let Some(sysinfo) = read_sysinfo(carnet) {
-            println!("{:#?}", sysinfo);
-            send_log(log_server, &sysinfo);
-        } else {
-            println!("Error leyendo sysinfo.");
-        }
-
-        thread::sleep(Duration::from_secs(10));
-    }
 }
 

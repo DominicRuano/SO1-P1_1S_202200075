@@ -291,7 +291,7 @@ static int sysinfo_show(struct seq_file *m, void *v) {
             seq_printf(m, "    	 \"MemoryUsage\": %lu,\n", process_mem_usage);
             seq_printf(m, "    	 \"CPUUsage\": %lu.%02lu,\n", cpu_usage / 100, cpu_usage % 100);
             seq_printf(m, "    	 \"DiskRead\": %lu,\n", disk_read);
-            seq_printf(m, "    	 \"DiskWrite\": %lu\n", disk_write);
+            seq_printf(m, "    	 \"DiskWrite\": %lu,\n", disk_write);
             seq_printf(m, "      \"Time\": %lu\n", total_time);
             seq_printf(m, "  	}");
 
