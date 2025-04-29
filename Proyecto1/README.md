@@ -53,6 +53,7 @@ El sistema consta de los siguientes componentes fundamentales:
 ### 4.2 Setup
 
 Comandos utilizados:
+
 ```bash
 # Comando para hacer pull a la imagen
 sudo docker pull  containerstack/alpine-stress
@@ -72,7 +73,6 @@ sudo systemctl start cron
 
 
 ```
-
 
 ### 4.2 Módulo de Kernel
 
@@ -109,7 +109,6 @@ lsmod | grep sysinfo
 sudo rmmod sysinfo.ko
 
 ```
-
 
 ### 4.3 Servicio en Rust
 
@@ -167,4 +166,3 @@ cargo run --release
 ## 7. Conclusión
 
 Este proyecto integra diversos conocimientos en sistemas operativos, programación en C, Rust y Bash, y administración de contenedores con Docker. Permite optimizar la gestión de recursos en entornos virtualizados, asegurando un monitoreo eficiente y un control automatizado de los contenedores en ejecución. La implementación de logs estructurados y gráficos representa un avance en la visualización y gestión de los datos generados por el sistema.
-
