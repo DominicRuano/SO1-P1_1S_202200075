@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package tweet;
+
+option go_package = "proyecto2_go_api/proto";
+
+message Tweet {
+  string description = 1;
+  string country = 2;
+  string weather = 3;
+}
+
+service TweetService {
+  rpc SendTweet(Tweet) returns (Response);
+}
+
+message Response {
+  string message = 1;
+}
+

@@ -1,0 +1,47 @@
+# RabbitMQWritter
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go2-rabbit
+  namespace: proyecto2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go2-rabbit
+  template:
+    metadata:
+      labels:
+        app: go2-rabbit
+    spec:
+      containers:
+      - name: go2-rabbit
+        image: 34.139.16.44.nip.io/sopes/rabbitwritter:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 6000
+
+---
+# KafkaWritter
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go3-kafka
+  namespace: proyecto2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go3-kafka
+  template:
+    metadata:
+      labels:
+        app: go3-kafka
+    spec:
+      containers:
+      - name: go3-kafka
+        image: 34.139.16.44.nip.io/sopes/kafkawritter:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 6000
+
