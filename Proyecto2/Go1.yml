@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-api
+  namespace: proyecto2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-api
+  template:
+    metadata:
+      labels:
+        app: go-api
+    spec:
+      containers:
+      - name: go-api
+        image: 34.139.16.44.nip.io/sopes/go-api-rest:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+
+      - name: go-grpc-server
+        image: 34.139.16.44.nip.io/sopes/go-api-grpc:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 50051
+
+---
+
+# Service interno para Go API
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-api-service
+  namespace: proyecto2
+spec:
+  selector:
+    app: go-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8081
+  type: ClusterIP
