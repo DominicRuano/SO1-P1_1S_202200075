@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"net"
+	"time"
 
 	"github.com/tuusuario/Go1-grpc/proto"
 
@@ -14,13 +15,40 @@ type server struct {
 	proto.UnimplementedTweetServiceServer
 }
 
-func (s *server) SendTweet(ctx context.Context, tweet *proto.Tweet) (*proto.Response, error) {
-	log.Println("Tweet recibido en el servidor gRPC:")
-	log.Println("Descripción:", tweet.Description)
-	log.Println("País:", tweet.Country)
-	log.Println("Clima:", tweet.Weather)
+func sendToExternalGRPC(addr string, tweet *proto.Tweet) {
+	conn, err := grpc.Dial(addr, grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(2*time.Second))
+	if err != nil {
+		log.Printf("❌ No se pudo conectar a %s: %v", addr, err)
+		return
+	}
+	defer conn.Close()
 
-	// Aquí a Go2 y Go3 (Kafka y RabbitMQ)
+	client := proto.NewTweetServiceClient(conn)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*2)
+	defer cancel()
+
+	// Si se quiere debugear este contenedor, se dene quitar el _ de la siguiente linea y poner res
+	// Luego descomentar el printf y revisar la respuesta recibida.
+	_, err = client.SendTweet(ctx, tweet)
+	if err != nil {
+		log.Printf("❌ Error al enviar a %s: %v", addr, err)
+		return
+	}
+
+	// log.Printf("✅ Respuesta de %s: %s", addr, res.Message)
+}
+
+func (s *server) SendTweet(ctx context.Context, tweet *proto.Tweet) (*proto.Response, error) {
+	// log.Println("Tweet recibido en el servidor gRPC:")
+	// log.Println("Descripción:", tweet.Description)
+	// log.Println("País:", tweet.Country)
+	// log.Println("Clima:", tweet.Weather)
+
+	// Enviar a Go2 (RabbitMQ)
+	go sendToExternalGRPC("rabbitwritter.proyecto2.svc.cluster.local:6000", tweet)
+
+	// Enviar a Go3 (Kafka)
+	go sendToExternalGRPC("kafkawritter.proyecto2.svc.cluster.local:6000", tweet)
 
 	return &proto.Response{Message: "Tweet recibido en gRPC Server"}, nil
 }

@@ -11,7 +11,7 @@ TOTAL_TIME=0
 for i in $(seq 1 $TOTAL)
 do
   START_TIME=$(date +%s%3N) # Milisegundos actuales
-  RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$URL" -H "Content-Type: application/json" -d '{"description":"Test","country":"GT","weather":"Soleado"}')
+  RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$URL" -H "Content-Type: application/json" -d '{"description":"Test4","country":"GT","weather":"Soleado"}')
   END_TIME=$(date +%s%3N)
 
   DURATION=$((END_TIME - START_TIME)) # Tiempo en ms

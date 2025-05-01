@@ -16,7 +16,7 @@ type server struct {
 }
 
 func publishToRabbit(tweet *proto.Tweet) error {
-	conn, err := amqp.Dial("amqp://guest:guest@rabbitmq-service.proyecto2.svc.cluster.local:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@rabbitmq.proyecto2.svc.cluster.local:5672/")
 	if err != nil {
 		return err
 	}

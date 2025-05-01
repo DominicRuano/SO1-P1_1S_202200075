@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go2-rabbit
+  name: rabbitwritter
   namespace: proyecto2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: go2-rabbit
+      app: rabbitwritter
   template:
     metadata:
       labels:
-        app: go2-rabbit
+        app: rabbitwritter
     spec:
       containers:
-      - name: go2-rabbit
+      - name: rabbitwritter
         image: 34.139.16.44.nip.io/sopes/rabbitwritter:latest
         imagePullPolicy: Always
         ports:
@@ -26,22 +26,53 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go3-kafka
+  name: kafkawritter
   namespace: proyecto2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: go3-kafka
+      app: kafkawritter
   template:
     metadata:
       labels:
-        app: go3-kafka
+        app: kafkawritter
     spec:
       containers:
-      - name: go3-kafka
+      - name: kafkawritter
         image: 34.139.16.44.nip.io/sopes/kafkawritter:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 6000
 
+---
+# Service para RabbitMQWritter
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitwritter
+  namespace: proyecto2
+spec:
+  selector:
+    app: rabbitwritter
+  ports:
+    - protocol: TCP
+      port: 6000
+      targetPort: 6000
+  type: ClusterIP
+
+---
+# Service para KafkaWritter
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafkawritter
+  namespace: proyecto2
+spec:
+  selector:
+    app: kafkawritter
+  ports:
+    - protocol: TCP
+      port: 6000
+      targetPort: 6000
+  type: ClusterIP

@@ -38,5 +38,26 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 export PATH="$PATH:$(go env GOPATH)/bin"
 protoc --go_out=. --go-grpc_out=. tweet.proto
 
+# Instalar el cliente de kafka strimzi 
+kubectl create -f 'https://strimzi.io/install/latest?namespace=proyecto2' -n proyecto2
+
+# Comando para conectar con kafka
+kubectl run kafka-client --rm -it --restart=Never \
+  --image=bitnami/kafka:latest \
+  --namespace=proyecto2 \
+  --command -- bash
+
+# Comando leer el topic
+kafka-console-consumer.sh \
+  --bootstrap-server kafka-cluster-kafka-bootstrap:9092 \
+  --topic tweets-clima \
+  --from-beginning
+
+# Comando para conectar con rabbitmq
+kubectl port-forward svc/rabbitmq 15672:15672 -n proyecto2
+
+# Conetar con rabbitmq (ir a colas, luego al topic y abajo sale get)
+http://localhost:15672
+
 
 ```

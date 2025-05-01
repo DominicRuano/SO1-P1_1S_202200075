@@ -18,7 +18,7 @@ type server struct {
 
 func publishToKafka(tweet *proto.Tweet) error {
 	writer := kafka.Writer{
-		Addr:     kafka.TCP("kafka-service.proyecto2.svc.cluster.local:9092"),
+		Addr:     kafka.TCP("kafka-cluster-kafka-bootstrap.proyecto2.svc.cluster.local:9092"),
 		Topic:    "tweets-clima",
 		Balancer: &kafka.LeastBytes{},
 	}
