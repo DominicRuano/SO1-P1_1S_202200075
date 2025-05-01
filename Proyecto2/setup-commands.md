@@ -60,4 +60,15 @@ kubectl port-forward svc/rabbitmq 15672:15672 -n proyecto2
 http://localhost:15672
 
 
+
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+gcloud container clusters get-credentials tu-cluster --zone tu-zona --project tu-proyecto
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml
+
+kubectl delete pod <redis-pod-name> -n proyecto2
+kubectl delete pod <valkey-pod-name> -n proyecto2
+
+
 ```

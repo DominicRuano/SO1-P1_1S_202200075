@@ -1,0 +1,135 @@
+# Redis Persistent Volume Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pvc
+  namespace: proyecto2
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: standard
+
+---
+# Valkey Persistent Volume Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: valkey-pvc
+  namespace: proyecto2
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: standard
+
+---
+# Redis Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: proyecto2
+  labels:
+    app: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.2
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: redis-data
+              mountPath: /data
+          args: ["--appendonly", "yes"]
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+      volumes:
+        - name: redis-data
+          persistentVolumeClaim:
+            claimName: redis-pvc
+
+---
+# Valkey Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: valkey
+  namespace: proyecto2
+  labels:
+    app: valkey
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: valkey
+  template:
+    metadata:
+      labels:
+        app: valkey
+    spec:
+      containers:
+        - name: valkey
+          image: valkey/valkey:7.2
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: valkey-data
+              mountPath: /data
+          args: ["--appendonly", "yes"]
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+      volumes:
+        - name: valkey-data
+          persistentVolumeClaim:
+            claimName: valkey-pvc
+
+
+---
+# Redis Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: proyecto2
+spec:
+  selector:
+    app: redis
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+  type: ClusterIP
+
+---
+# Valkey Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: valkey
+  namespace: proyecto2
+spec:
+  selector:
+    app: valkey
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+  type: ClusterIP

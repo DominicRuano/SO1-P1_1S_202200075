@@ -1,0 +1,1002 @@
+[
+  {
+    "description": "Radiación alta en la región",
+    "country": "DE",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Día ideal para actividades al aire libre",
+    "country": "AU",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Tormentas frecuentes por la tarde",
+    "country": "MX",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "MX",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "CL",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "ES",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "KR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "ZA",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Tormentas frecuentes por la tarde",
+    "country": "AU",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "AU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "JP",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Inundaciones leves en zonas bajas",
+    "country": "ZA",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "CA",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "UK",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "ZA",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "IN",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "AR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Lluvias intermitentes todo el día",
+    "country": "ZA",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "BR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "IT",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Lluvias intermitentes todo el día",
+    "country": "DE",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "BR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "MX",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "KR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Inundaciones leves en zonas bajas",
+    "country": "AR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "NG",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Inundaciones leves en zonas bajas",
+    "country": "DE",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "CL",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "IN",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "ZA",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "ES",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "DE",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Inundaciones leves en zonas bajas",
+    "country": "NG",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Día ideal para actividades al aire libre",
+    "country": "CO",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "US",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "US",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "CN",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Lluvias intermitentes todo el día",
+    "country": "KR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "MX",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "BR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "ES",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "RU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Día ideal para actividades al aire libre",
+    "country": "KR",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "CA",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "KR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "AU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "UK",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "DE",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "KR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "US",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Radiación alta en la región",
+    "country": "BR",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "ZA",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "ZA",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "CA",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "IT",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "CO",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "CL",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "KR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "CA",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "CO",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "CO",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "CN",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "BR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "CA",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Tormentas frecuentes por la tarde",
+    "country": "IN",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Lluvias intermitentes todo el día",
+    "country": "DE",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "CO",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "US",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "AU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "KR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "CL",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "US",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "ZA",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "ES",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "MX",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "NG",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "US",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "DE",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "AU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "FR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "AU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Tormentas frecuentes por la tarde",
+    "country": "IN",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Radiación alta en la región",
+    "country": "CO",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "AR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "AU",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Lluvias intermitentes todo el día",
+    "country": "MX",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "JP",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Día ideal para actividades al aire libre",
+    "country": "JP",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Inundaciones leves en zonas bajas",
+    "country": "IN",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "DE",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "RU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "RU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Lluvias intermitentes todo el día",
+    "country": "CO",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "AU",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "ZA",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "DE",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "US",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "ZA",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "MX",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Radiación alta en la región",
+    "country": "IT",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "CA",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "AU",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "CA",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "IN",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Inundaciones leves en zonas bajas",
+    "country": "IT",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "BR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "ZA",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "CA",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "UK",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Radiación alta en la región",
+    "country": "ES",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "JP",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Tormentas frecuentes por la tarde",
+    "country": "UK",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "MX",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "MX",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "CL",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "FR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "DE",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "ZA",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Lluvias intermitentes todo el día",
+    "country": "RU",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Inundaciones leves en zonas bajas",
+    "country": "AR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Tormentas frecuentes por la tarde",
+    "country": "AR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "ZA",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "IN",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "AU",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "AU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Inundaciones leves en zonas bajas",
+    "country": "CL",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "CL",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "DE",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "ES",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Radiación alta en la región",
+    "country": "CN",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "KR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Tormentas frecuentes por la tarde",
+    "country": "US",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "RU",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "RU",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "RU",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Tormentas frecuentes por la tarde",
+    "country": "US",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "FR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Inundaciones leves en zonas bajas",
+    "country": "CN",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "IN",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Lluvias intermitentes todo el día",
+    "country": "CO",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "CN",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "IN",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Tormentas frecuentes por la tarde",
+    "country": "ZA",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "RU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "ZA",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "MX",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "FR",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "RU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Radiación alta en la región",
+    "country": "AR",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Lluvias intermitentes todo el día",
+    "country": "AU",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "BR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "ES",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "DE",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "KR",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "UK",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "ZA",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "CN",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "UK",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Radiación alta en la región",
+    "country": "ZA",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Día ideal para actividades al aire libre",
+    "country": "IT",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "US",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "MX",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "FR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "US",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "CL",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "UK",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "IN",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "JP",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "DE",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "ZA",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "US",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "RU",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Tormentas frecuentes por la tarde",
+    "country": "BR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "FR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Lluvias intermitentes todo el día",
+    "country": "FR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "ZA",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Neblina matutina densa",
+    "country": "CO",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Temperaturas altas y sin nubes",
+    "country": "UK",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Cielo despejado todo el día",
+    "country": "FR",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Precipitaciones intensas y persistentes",
+    "country": "MX",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "IT",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "IT",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Radiación alta en la región",
+    "country": "CO",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Sol brillante desde la mañana",
+    "country": "US",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Necesario salir con paraguas",
+    "country": "NG",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "CL",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Inundaciones leves en zonas bajas",
+    "country": "KR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Día ideal para actividades al aire libre",
+    "country": "BR",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "AR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Día ideal para actividades al aire libre",
+    "country": "KR",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Día ideal para actividades al aire libre",
+    "country": "UK",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Cielo completamente cubierto",
+    "country": "BR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "ES",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Tormentas frecuentes por la tarde",
+    "country": "FR",
+    "weather": "Lluvioso"
+  },
+  {
+    "description": "Radiación alta en la región",
+    "country": "FR",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Radiación alta en la región",
+    "country": "FR",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Ambiente fresco y gris",
+    "country": "ES",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Día ideal para actividades al aire libre",
+    "country": "CN",
+    "weather": "Soleado"
+  },
+  {
+    "description": "Sin presencia de sol durante el día",
+    "country": "BR",
+    "weather": "Nubloso"
+  },
+  {
+    "description": "Visibilidad reducida en carreteras",
+    "country": "CL",
+    "weather": "Nubloso"
+  }
+]

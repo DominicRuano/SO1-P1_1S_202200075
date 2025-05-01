@@ -1,0 +1,42 @@
+# RabbitMQConsumer
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitconsumer
+  namespace: proyecto2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitconsumer
+  template:
+    metadata:
+      labels:
+        app: rabbitconsumer
+    spec:
+      containers:
+      - name: rabbitconsumer
+        image: 34.139.16.44.nip.io/sopes/rabbitconsumer:latest
+        imagePullPolicy: Always
+
+---
+# KafkaConsumer
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafkaconsumer
+  namespace: proyecto2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafkaconsumer
+  template:
+    metadata:
+      labels:
+        app: kafkaconsumer
+    spec:
+      containers:
+      - name: kafkaconsumer
+        image: 34.139.16.44.nip.io/sopes/kafkaconsumer:latest
+        imagePullPolicy: Always
